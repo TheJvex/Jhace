@@ -1,4 +1,4 @@
-# JhAntiCrashExploits (JHACE)
+# JhAntiCrashExploits (JHACE) - Não oficial (reconstrução)
 
 [![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)]()
 [![Minecraft Versions](https://img.shields.io/badge/Minecraft-1.8.x%20--%201.21.x-blue.svg)]()
