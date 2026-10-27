@@ -1,0 +1,11 @@
+name: JH_AntiCrashExploits
+main: JH_AntiCrashExploits.Main
+load: POSTWORLD
+author: Jheyson Henrique
+version: 2.1.7
+softdepend: [FastAsyncWorldEdit, WorldEdit, Multiverse-Core, PermissionsEx, nLogin, ProtocolLib]
+description: "Um plugin para evitar que exploits travem o servidor, Special Thanks to: FormallyMyles(Skull Check), AlvinB(NbtUtil, ReflectUtil)"
+commands:
+  JH_AntiCrashExploits:
+    aliases: [jh_ace, crashfix, ace, jhace, jace]
+    

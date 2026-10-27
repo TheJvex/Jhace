@@ -1,0 +1,20 @@
+# Gradle
+.gradle/
+build/
+out/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDE & OS
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+.vscode/
+*.log
+sources.txt
+*.zip
+
+# Keep libs folder if needed for offline fallbacks

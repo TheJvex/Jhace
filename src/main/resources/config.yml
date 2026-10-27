@@ -1,0 +1,88 @@
+mensagens:
+  blockedCommand: "&cEste comando não pode ser executado."
+  blockedTab: "&cO autocompletar não está habilidado para este comando."
+  WriteBook: "&cVocê não pode assinar ou editar livros."
+
+# Os comandos bloqueados só poderam ser ultilizados por jogadores OP
+CommandLimiter:
+
+  # Quem tiver esta permissão terá bypass e poderá usar todos os comandos dos plugins e syntac
+  bypassPermission: "jh_anticrashexploits.bypass.CommandLimiter"
+  
+  # Comandos como /pex:promote ou qualquer coisa como /plugin:comando será bloqueado
+  syntacBlock: true
+
+  # Bloqueie comandos especificos de outros plugins
+  # isso também bloqueia o uso de TAB no comando
+  OtherBlockedCommands:
+  - "/blockedCommand???"
+
+  # Comandos listados aqui serão liberados para todos os jogadores
+  # Mesmo sem ser OP
+  whitelist:
+  - "/whitelistedCommand??"
+  
+  blockPlugins:
+    WorldEdit-and-FAWE: true
+    Multiverse-Core: true
+    PermissionsEx: true
+
+BlockOptions:
+  WriteBook: true
+  # Limita o tamanho máximo de um pacote recebido pelo servidor
+  # Limite 10000-20000, Se usado um valor maior ou menor o plugin irá definir o padrão novamente
+  # Caso use nLogin o valor irá ser definido para 20000
+  PacketLenLimit: 12800
+  # Desativar o verificador do exploit Log4j no modo DecoderHandler
+  DisableLog4jOnDecoder: false
+  
+
+nbt:
+
+  # Profundidade máxima de compounds/listas aninhadas
+  # Evita exploits com NBT recursivo extremamente profundo
+  max-depth: 8
+
+  # Quantidade máxima de chaves dentro de um compound
+  # Exemplo:
+  # {
+  #   a: 1,
+  #   b: 2,
+  #   c: 3
+  # }
+  max-compound-keys: 64
+
+  # Quantidade máxima de elementos em listas NBT
+  # Muito importante para livros, fireworks, entities etc
+  max-list-size: 256
+
+  # Tamanho máximo de strings NBT
+  # Protege contra:
+  # - livros gigantes
+  # - nomes absurdos
+  # - lore gigante
+  # - json chat exploit
+  max-string-length: 4096
+
+  # Tamanho máximo de byte arrays
+  max-byte-array-length: 8192
+
+  # Tamanho máximo de int arrays
+  max-int-array-length: 2048
+
+  # Tamanho máximo de long arrays
+  max-long-array-length: 2048
+
+ChunkLimiter:
+  # Limitar a quantidade de armor stand que um jogador pode colocar na mesma chunk
+  # para desativar basta colocar 0 ou -1
+  # Caso algum armor stand se mova para outro chunk ele será removido
+  ArmorStand:
+    limit: 10
+    message: "&cO limite de armor stand neste chunk foi atingido."
+  Minecart:
+    limit: 10
+    message: "&cO limite de carrinhos neste chunk foi atingido."
+  Boat:
+    limit: 10
+    message: "&cO limite de carrinhos neste chunk foi atingido."

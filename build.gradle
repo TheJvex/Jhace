@@ -1,0 +1,81 @@
+plugins {
+    id 'java'
+}
+
+group = 'net.jhdev'
+version = '2.1.7'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+repositories {
+    mavenCentral()
+    // Spigot & BungeeCord Repository
+    maven {
+        name = 'spigotmc-repo'
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+    // Sonatype OSS
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+    // ProtocolLib Repository (dmulloy2)
+    maven {
+        name = 'dmulloy2-repo'
+        url = 'https://repo.dmulloy2.net/repository/public/'
+    }
+    // EngineHub Repository (WorldEdit)
+    maven {
+        name = 'enginehub-repo'
+        url = 'https://maven.enginehub.org/repo/'
+    }
+    // PaperMC / CodeMC
+    maven {
+        name = 'codemc-repo'
+        url = 'https://repo.codemc.io/repository/maven-public/'
+    }
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    // Spigot API (provides modern & legacy bukkit classes)
+    compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
+
+    // BungeeCord Chat / Proxy API
+    compileOnly 'net.md-5:bungeecord-chat:1.8-SNAPSHOT'
+
+    // ProtocolLib
+    compileOnly 'com.comphenix.protocol:ProtocolLib:5.1.0'
+
+    // WorldEdit (exclude ancient transitive bukkit 1.7.9 pom dependency)
+    compileOnly('com.sk89q.worldedit:worldedit-core:6.1') {
+        transitive = false
+    }
+    compileOnly('com.sk89q.worldedit:worldedit-bukkit:6.1') {
+        transitive = false
+    }
+
+    // Local jars fallback
+    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+processResources {
+    inputs.property 'version', project.version
+
+    filesMatching('plugin.yml') {
+        expand 'version': project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+jar {
+    archiveFileName = 'JH_AntiCrashExploits.jar'
+}
